@@ -11,6 +11,8 @@ require('model/functions.fn.php');
 			PROCESS
 ********************************/
 
+
+
 if(isset($_POST['email']) && isset($_POST['password'])){
 	if(!empty($_POST['email']) && !empty($_POST['password'])){
 
@@ -25,6 +27,26 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 		$error = 'Champs requis !';
 	}
 }
+$bdd = new PDO('mysql:host=localhost;dbname=iim_git_soundcloud', 'root', '');
+
+$req = $bdd->query('SELECT * FROM filtre');
+
+$mots = [];
+$rp = [];
+
+while($m = $req->fetch()) {
+    array_push($mots, $m['mot']);
+    $r = '';
+    for($i=0;$i<strlen($m['mot']);$i++) {
+        $r .= '*';
+    }
+    array_push($rp, $r);
+}
+
+
+//var_dump($mots);
+//var_dump($rp);
+
 
 /******************************** 
 			VIEW 
