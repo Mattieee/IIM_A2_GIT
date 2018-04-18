@@ -12,20 +12,26 @@ require('model/functions.fn.php');
 ********************************/
 
 
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
-if(isset($_POST['email']) && isset($_POST['password'])){
-	if(!empty($_POST['email']) && !empty($_POST['password'])){
+                $email = htmlspecialchars($_POST['email']);
+                $password = htmlspecialchars($_POST['password']);
 
-		// TODO
+                
+                userConnection($db, $email, $password);
 
-		// Force user connection to access dashboard
-		userConnection($db, 'git@initiation.com', 'password');
-		
-		header('Location: dashboard.php');
+                if (userConnection($db, $email, $password)) {
+                    header('Location: dashboard.php');
+                } else {
+                    $error = "Mauvais identifiants";
+                }
 
-	}else{
-		$error = 'Champs requis !';
-	}
+            } else {
+                $error = 'Champs requis !';
+            }
+
+
 }
 $bdd = new PDO('mysql:host=localhost;dbname=iim_git_soundcloud', 'root', '');
 
