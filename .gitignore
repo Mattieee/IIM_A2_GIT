@@ -2,3 +2,8 @@ config/config.php
 musics
 .idea
 .DS_Store
+<<<<<<< HEAD
+Test
+=======
+test
+>>>>>>> inscription
