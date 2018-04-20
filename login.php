@@ -18,7 +18,6 @@ require('model/functions.fn.php');
                 $email = htmlspecialchars($_POST['email']);
                 $password = htmlspecialchars($_POST['password']);
 
-
                 userConnection($db, $email, $password);
 
                 if (userConnection($db, $email, $password)) {
