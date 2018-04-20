@@ -37,6 +37,8 @@
 										</ul>
 									</div>
 									<b class="username">Posté par <?php echo $music['username']; ?></b>
+                                    <button id="counter" onclick="count(); toggleText(this.id);"> Like </button>
+                                    <span id="keeper"> 0 </span>
 									<h3 class="title">
 										<?php
 
