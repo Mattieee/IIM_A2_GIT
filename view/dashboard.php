@@ -23,7 +23,8 @@
 											else{
 												echo '<img src="view/profil_pic/undefined.jpg" alt=""></a>';
 											}
-										?>
+
+                                        ?>
 									</div>
 								</div>
 								<div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
@@ -36,8 +37,36 @@
 										</ul>
 									</div>
 									<b class="username">Posté par <?php echo $music['username']; ?></b>
+                                    <button id="counter" onclick="count(); toggleText(this.id);"> Like </button>
+                                    <span id="keeper"> 0 </span>
 									<h3 class="title">
-										<?php echo $music['title']; ?>
+										<?php
+
+
+                                        $bdd = new PDO('mysql:host=localhost;dbname=iim_git_soundcloud', 'root', '');
+
+                                        $req = $bdd->query('SELECT * FROM filtre');
+
+                                        $mots = [];
+                                        $rp = [];
+
+                                        while($m = $req->fetch()) {
+                                            array_push($mots, $m['mot']);
+                                            $r = '';
+                                            for($i=0;$i<strlen($m['mot']);$i++) {
+                                                $r .= '*';
+                                            }
+                                            array_push($rp, $r);
+                                        }
+
+                                        $music['title'] = str_replace($mots, $rp, $music['title']);
+                                        echo $music['title'];
+
+
+
+
+
+										?>
 									</h3>
 									<p class="clearfix">
 										<small class="date pull-right"><i class="fa fa-clock-o"></i> <?php echo $music['created_at']; ?></small>
