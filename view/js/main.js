@@ -1,7 +1,7 @@
 var countVar = 0;
 
 function count(){
-    if(countVar == 0){
+    if(countVar === 0){
         document.getElementById('keeper').innerHTML = ++countVar;
     }
     else
@@ -13,7 +13,7 @@ function count(){
 function toggleText(button_id)
 {
     var el = document.getElementById(button_id);
-    if (el.firstChild.data == "Like")
+    if (el.firstChild.data === "Like")
     {
         el.firstChild.data = "Unlike";
     }
