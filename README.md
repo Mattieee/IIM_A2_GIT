@@ -3,7 +3,7 @@
 Matthieu Royer
 ------
 * Login
-* Filtre à gros mots
+* Filtre à gros mots (bdd à importer)
 
 
 
